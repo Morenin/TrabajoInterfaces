@@ -17,7 +17,7 @@ class CreateWorksheetsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->date('date');
-            $table->string('description');
+            $table->longText('description');
             $table->unsignedInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
             $table->boolean('accepted');

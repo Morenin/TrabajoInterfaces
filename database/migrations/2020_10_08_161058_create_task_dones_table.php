@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskDoneTable extends Migration
+class CreateTaskDonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTaskDoneTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_done', function (Blueprint $table) {
+        Schema::create('task_dones', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('student_id');
@@ -33,6 +33,6 @@ class CreateTaskDoneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_done');
+        Schema::dropIfExists('task_dones');
     }
 }

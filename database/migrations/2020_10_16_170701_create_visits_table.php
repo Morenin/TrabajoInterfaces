@@ -17,7 +17,7 @@ class CreateVisitsTable extends Migration
             $table->engine = "InnoDB"; 
             $table->increments('id');
             $table->unsignedInteger('tracing_id');
-            $table->foreign('tracing_id')->references('id')->on('tracing');
+            $table->foreign('tracing_id')->references('id')->on('tracings');
             $table->unsignedInteger('enterprise_id');
             $table->foreign('enterprise_id')->references('id')->on('enterprises');
             $table->date('date');

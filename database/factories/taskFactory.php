@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\task::class, function (Faker $faker) {
     return [
         'number' => $faker->randomDigit,
-        'description' => $faker->paragraph,
+        'description' => $faker->text,
         'deleted' => $faker->boolean = false,
     ];
 });
