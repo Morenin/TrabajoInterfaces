@@ -20,7 +20,7 @@ class CreateRasTable extends Migration
             $table->text('description');
             $table->unsignedInteger('module_id');
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }

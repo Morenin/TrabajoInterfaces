@@ -17,10 +17,10 @@ class CreateStudysTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->unsignedInteger('cycle_id');
             $table->foreign('cycle_id')->references('id')->on('cycles');
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateStudysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studies');
+        Schema::dropIfExists('studys');
     }
 }

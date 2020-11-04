@@ -23,7 +23,7 @@ class CreateCesTable extends Migration
             $table->unsignedInteger('task_id');
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->integer('mark');
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }

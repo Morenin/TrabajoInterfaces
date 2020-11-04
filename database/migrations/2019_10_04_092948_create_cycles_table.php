@@ -19,7 +19,7 @@ class CreateCyclesTable extends Migration
             $table->string('name');
             $table->string('grade');
             $table->string('year');
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }

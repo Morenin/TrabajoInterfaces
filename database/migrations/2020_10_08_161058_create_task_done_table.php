@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskDonesTable extends Migration
+class CreateTaskDoneTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,11 +17,11 @@ class CreateTaskDonesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->unsignedInteger('task_id');
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->integer('mark');
-            $table->boolean('deleted');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateTaskDonesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_dones');
+        Schema::dropIfExists('task_done');
     }
 }

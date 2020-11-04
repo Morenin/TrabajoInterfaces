@@ -14,7 +14,7 @@ class CreateVisitsTable extends Migration
     public function up()
     {
         Schema::create('visits', function (Blueprint $table) {
-            $table->engine = "InnoDB"; 
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->unsignedInteger('tracing_id');
             $table->foreign('tracing_id')->references('id')->on('tracings');
@@ -22,8 +22,8 @@ class CreateVisitsTable extends Migration
             $table->foreign('enterprise_id')->references('id')->on('enterprises');
             $table->date('date');
             $table->float('kms');
-            $table->boolean('accepted');
-            $table->boolean('deleted');
+            $table->boolean('accepted')->default(false);
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }
