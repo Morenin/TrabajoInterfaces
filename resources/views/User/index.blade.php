@@ -37,9 +37,9 @@
           <td>{{$User -> cycle_id}}</td>
         <td>
             
-            <a class="btn btn-primary" href="{{ route('User.edit',$User->id) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('User.edit',$User->id) }}">Editar</a>
             {!! Form::open(['method' => 'DELETE','route' => ['User.destroy', $User->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
     </tr>

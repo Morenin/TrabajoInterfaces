@@ -41,8 +41,8 @@ class UserController extends Controller
             'name' => 'required', 
             'firstname' => 'required', 
             'phone' => 'required',
+            'password' => 'required',
             'email' => 'required',
-            'password' => 'required', 
             'type' => 'required',
         ]);
         User::create($request->all());
@@ -81,7 +81,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id )
     {
         //
         request()->validate([
@@ -89,15 +89,11 @@ class UserController extends Controller
             'firstname' => 'required', 
             'phone' => 'required',
             'email' => 'required',
-            'password' => 'required', 
-            'email_verified_at' => 'required',
             'type' => 'required',
-            'enterprise_id' => 'required',
-            'cycle_id' => 'required',
-            'deleted'=> 'required',
+            
         ]);
         User::create($request->all());
-        return redirect()->route('User.index')->with('success','Usuario creado correctamente');
+        return redirect()->route('User.index')->with('success','Usuario actualizado correctamente');
     }
 
     /**
