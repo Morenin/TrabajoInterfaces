@@ -11,7 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return redirect(route('login'));
+});
+Route::get('/starter', function() {
+    return view('starter');
 });
 
+Auth::routes(['verify' => false, 'reset' => false]);
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+});
+
+Route::get('/Usuario', 'UserController@index')->name('usuario');
+Route::resource('User','UserController');
