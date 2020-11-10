@@ -19,12 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->date('email_verified_at');
+            $table->date('email_verified_at')->nullable();
             $table->string('password');
             $table->string('type')->default('al');
-            $table->unsignedInteger('enterprise_id');
+            $table->unsignedInteger('enterprise_id')->nullable();
             $table->foreign('enterprise_id')->references('id')->on('enterprises');
-            $table->unsignedInteger('cycle_id');
+            $table->unsignedInteger('cycle_id')->nullable();
             $table->foreign('cycle_id')->references('id')->on('cycles');
             $table->rememberToken();
             $table->boolean('deleted')->default(false);

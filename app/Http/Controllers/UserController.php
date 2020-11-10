@@ -42,11 +42,7 @@ class UserController extends Controller
             'phone' => 'required',
             'email' => 'required',
             'password' => 'required', 
-            'email_verified_at' => 'required',
             'type' => 'required',
-            'enterprise_id' => 'required',
-            'cycle_id' => 'required',
-            'deleted'=> 'required',
         ]);
         User::create($request->all());
         return redirect()->route('User.index')->with('success','Usuario creado correctamente');
