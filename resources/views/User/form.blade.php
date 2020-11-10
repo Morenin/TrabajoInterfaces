@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container-fluid col-sm-6" >
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Nombre:</strong>
@@ -23,12 +23,14 @@
             {!! Form::email('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
         </div>
     </div>
+    @if($entrar=='si')
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Contraseña:</strong>
             {!! Form::password('password', null, array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
         </div>
     </div>
+    @endif
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Tipo de usuario:</strong>

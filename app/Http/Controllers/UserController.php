@@ -25,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('User.create');
+        $entrar='si';
+        return view('User.create',compact('entrar'));
     }
 
     /**
@@ -67,9 +68,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $entrar='no';
         $User=user::find($id);
-        return view('User.edit',compact('User'));
+        return view('User.edit',compact('User'),compact('entrar'));
     }
 
     /**
