@@ -18,7 +18,7 @@
     <table class="table table-bordered">
         <tr>
           <th>Nombre</th>
-          <th>Apllido</th>
+          <th>Apellido</th>
           <th>Movil</th>
           <th>Email</th>
           <th>Type</th>
