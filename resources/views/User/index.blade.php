@@ -5,7 +5,7 @@
             <div class="pull-left">
                 <h2>Lista de Usuarios</h2>
             </div>
-            <div class="pull-right">
+            <div class="pull-right ">
                 <a class="btn btn-success" href="{{ route('User.create') }}"> Crear Nuevo Usuario</a>
             </div>
         </div>
@@ -15,16 +15,16 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <table class="table table-bordered">
+    <table class="table table-bordered container">
         <tr>
           <th>Nombre</th>
-          <th>Apllido</th>
+          <th>Apellido</th>
           <th>Movil</th>
           <th>Email</th>
           <th>Type</th>
           <th>Enterprtise_id</th>
           <th>cicle_id</th>
-          <th width="280px">Operation</th>
+          <th width="200px">Operaciones</th>
         </tr>
     @foreach ($Users as $User)
     <tr>
