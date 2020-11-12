@@ -13,7 +13,8 @@ class CycleController extends Controller
      */
     public function index()
     {
-        //
+        $Cycles=Cycle::orderBy('year','DESC')->paginate(3);
+        return view('Cycle.index',compact('Cycle'));
     }
 
     /**
@@ -23,7 +24,7 @@ class CycleController extends Controller
      */
     public function create()
     {
-        //
+        return view ('Cycle.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class CycleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ciclo = new Cycle();
+        $data = $this->validate($request, [
+            'id'=>'required',
+            'name'=>'required',
+            'grade'=>'required',
+            'year'=>'required',
+        ]);
+        // tipo de validacion para el deleted
+        // aquí he borrado la línea de arriba que estaba duplicada
+        Cycle::create($request->all());
+        return redirect()->route('Cycle.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -45,7 +56,8 @@ class CycleController extends Controller
      */
     public function show($id)
     {
-        //
+        $Cycle=Cycle::find($id);
+        return  view('Cycle.show',compact('Cycle'));
     }
 
     /**
@@ -56,7 +68,8 @@ class CycleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Cycle=Cycle::find($id);
+        return view('Cycle.edit',compact('Cycles'));
     }
 
     /**
@@ -68,7 +81,9 @@ class CycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,['id'=>'required', 'name'=>'required', 'grade'=>'required', 'year'=>'required']);
+        Cycles::update($request->all());
+        return redirect()->route('Cycle.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -79,6 +94,12 @@ class CycleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ciclo = Cycle::find($id); //primero hago variable de ese ciclo que busco que es el que voy a eliminar
+        // luego establezco el valor nuevo
+        $ciclo->deleted = 1;
+        //luego actualizo el registro
+        $ciclo->update();
+
+        return redirect()->route('Cycle.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }
