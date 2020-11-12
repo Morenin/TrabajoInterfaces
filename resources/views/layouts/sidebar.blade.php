@@ -37,6 +37,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('cycle')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Ciclos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('empresa')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Empresas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <form id="logout-form" action="{{route('logout')}}" method="post">
                         @csrf
                     </form>
