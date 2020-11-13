@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\module;
 
 class ModuleController extends Controller
 {
@@ -13,7 +14,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        $modules = Module::latest()->paginate(10);
+        return view('Module.index', compact('modules'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Module.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'cycle_id'=>'required',
+            'deleted'=>'required'
+            ]);
+        Module::create($request->all());
+        return redirect()->route('Module.index')->with('success','Módulo creado correctamente.');
     }
 
     /**
@@ -45,7 +54,8 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        //
+        $modules = Module::find($id);
+        return view('Modules.show', compact('modules'));
     }
 
     /**
@@ -56,7 +66,8 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modules = Module::find($id);
+        return view('Module.edit',compact('modules'));
     }
 
     /**
@@ -68,7 +79,15 @@ class ModuleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'cycle_id'=>'required',
+            'deleted'=>'required'
+            ]);
+        //Enterprise::find($id)->update($request->all());
+        Module::create($request->all());
+        return redirect()->route('Module.index')->with('success','Módulo actualizado correctamente.');
     }
 
     /**
@@ -79,6 +98,7 @@ class ModuleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Module::find($id)->delete();
+        return redirect()->route('Module.index')->with('success','Registro eliminado correctamente.');
     }
 }
