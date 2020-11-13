@@ -43,6 +43,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('modulo')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Módulos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('empresa')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>Empresas</p>
