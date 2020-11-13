@@ -32,3 +32,6 @@ Route::resource('Enterprise', 'EnterpriseController');
 
 Route::get('/Cycle', 'CycleController@index')->name('cycle');
 Route::resource('Cycles', 'CyclesController');
+
+Route::get('/modulos', 'ModuleController@index')->name('modulo');
+Route::resource('Module', 'ModuleController');
