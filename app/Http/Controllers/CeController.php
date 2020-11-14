@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ce;
 
 class CeController extends Controller
 {
@@ -13,7 +14,8 @@ class CeController extends Controller
      */
     public function index()
     {
-        //
+        $Ces=Ce::latest()->paginate(10);
+        return view('Ce.index',compact('Ces'));
     }
 
     /**
@@ -23,7 +25,7 @@ class CeController extends Controller
      */
     public function create()
     {
-        //
+        return view ('Ce.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class CeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Ce = new Ce();
+        $this->validate($request,[ 
+            'word' => 'required',
+            'description' => 'required',
+            'ra_id' => 'required',
+            'task_id' => 'required',
+            'mark' => 'required',
+        ]);
+        Ce::update($request->all());
+        return redirect()->route('Ce.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -45,7 +56,8 @@ class CeController extends Controller
      */
     public function show($id)
     {
-        //
+        $Ce=Ce::find($id);
+        return  view('Ce.show',compact('Ce'));
     }
 
     /**
@@ -56,7 +68,8 @@ class CeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Ce=Ce::find($id);
+        return view('Ce.edit',compact('Ce'));
     }
 
     /**
@@ -68,7 +81,15 @@ class CeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'word' => 'required',
+            'description' => 'required',
+            'ra_id' => 'required',
+            'task_id' => 'required',
+            'mark' => 'required',
+        ]);
+        Ce::update($request->all());
+        return redirect()->route('Ce.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -79,6 +100,10 @@ class CeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Ce = Ce::find($id); 
+        $Ce->deleted = 1;
+        $Ce->update();
+
+        return redirect()->route('Ce.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

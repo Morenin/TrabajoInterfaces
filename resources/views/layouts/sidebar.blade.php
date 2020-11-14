@@ -49,6 +49,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('ce')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Criterios de Evaulacion</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('empresa')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>Empresas</p>
