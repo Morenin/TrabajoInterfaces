@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\enterprise;
 
 class EnterpriseController extends Controller
 {
-    /**
+/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $enterprises = Enterprise::latest()->paginate(10);
+        return view('Enterprise.index', compact('enterprises'));
     }
 
     /**
@@ -23,7 +25,7 @@ class EnterpriseController extends Controller
      */
     public function create()
     {
-        //
+        return view('Enterprise.create');
     }
 
     /**
@@ -34,7 +36,14 @@ class EnterpriseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'deleted'=>'required'
+            ]);
+        Enterprise::create($request->all());
+        return redirect()->route('Enterprise.index')->with('success','Empresa creada correctamente.');
     }
 
     /**
@@ -45,7 +54,8 @@ class EnterpriseController extends Controller
      */
     public function show($id)
     {
-        //
+        $enterprises = Enterprise::find($id);
+        return view('Enterprises.show', compact('enterprises'));
     }
 
     /**
@@ -56,7 +66,8 @@ class EnterpriseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $enterprises = Enterprise::find($id);
+        return view('Enterprise.edit',compact('enterprises'));
     }
 
     /**
@@ -68,7 +79,15 @@ class EnterpriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'deleted'=>'required'
+            ]);
+        //Enterprise::find($id)->update($request->all());
+        Enterprise::create($request->all());
+        return redirect()->route('Enterprise.index')->with('success','Empresa actualizada correctamente.');
     }
 
     /**
@@ -79,6 +98,7 @@ class EnterpriseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Enterprise::find($id)->delete();
+        return redirect()->route('Enterprise.index')->with('success','Registro eliminado correctamente.');
     }
 }
