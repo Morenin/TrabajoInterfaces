@@ -14,8 +14,8 @@ class CycleController extends Controller
      */
     public function index()
     {
-        $Cycles=Cycle::orderBy('year','DESC')->paginate(3);
-        return view('Cycle.index',compact('Cycle'));
+        $Cycles=Cycle::latest()->paginate(10);
+        return view('Cycle.index',compact('Cycles'));
     }
 
     /**
@@ -36,9 +36,8 @@ class CycleController extends Controller
      */
     public function store(Request $request)
     {
-        $ciclo = new Cycle();
+        $cycle = new Cycle();
         $data = $this->validate($request, [
-            'id'=>'required',
             'name'=>'required',
             'grade'=>'required',
             'year'=>'required',
@@ -70,7 +69,7 @@ class CycleController extends Controller
     public function edit($id)
     {
         $Cycle=Cycle::find($id);
-        return view('Cycle.edit',compact('Cycles'));
+        return view('Cycle.edit',compact('Cycle'));
     }
 
     /**
@@ -82,7 +81,7 @@ class CycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,['id'=>'required', 'name'=>'required', 'grade'=>'required', 'year'=>'required']);
+        $this->validate($request,[ 'name'=>'required', 'grade'=>'required', 'year'=>'required']);
         Cycles::update($request->all());
         return redirect()->route('Cycle.index')->with('success','Registro creado satisfactoriamente');
     }

@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('cycle')}}" class="nav-link">
+                    <a href="{{route('ciclos')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>Ciclos</p>
                     </a>

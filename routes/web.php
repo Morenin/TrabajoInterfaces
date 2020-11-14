@@ -30,8 +30,8 @@ Route::resource('User','UserController');
 Route::get('/empresas', 'EnterpriseController@index')->name('empresa');
 Route::resource('Enterprise', 'EnterpriseController');
 
-Route::get('/Cycle', 'CycleController@index')->name('cycle');
-Route::resource('Cycles', 'CyclesController');
+Route::get('/ciclos', 'CycleController@index')->name('ciclos');
+Route::resource('Cycle', 'CycleController');
 
 Route::get('/modulos', 'ModuleController@index')->name('modulo');
 Route::resource('Module', 'ModuleController');
