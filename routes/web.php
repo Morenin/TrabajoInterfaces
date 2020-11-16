@@ -45,3 +45,9 @@ Route::resource('Ra', 'RaController');
 Route::get('/tarea', 'TaskController@index')->name('tarea');
 Route::resource('Task', 'TaskController');
 
+Route::get('/seguimientos', 'TracingController@index')->name('seguimiento');
+Route::resource('Tracing', 'TracingController');
+
+Route::get('/asistencias', 'AssistanceController@index')->name('asistencia');
+Route::resource('Assistance', 'AssistanceController');
+
