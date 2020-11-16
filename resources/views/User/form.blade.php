@@ -34,7 +34,11 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Tipo de usuario:</strong>
-            {!! Form::text('type', null, array('placeholder' => 'Tipo','class' => 'form-control')) !!}
+                <select name="tipo">
+                    <option value="1">al</option>
+                    <option value="2">tue</option>
+                    <option value="3">tul</option>
+                </select>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
