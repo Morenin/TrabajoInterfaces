@@ -30,7 +30,7 @@
           <td>{{$Tracing -> observation }}</td>
           <td>{{$Tracing -> tutor_c_id }}</td>
         <td>
-            <a class="btn btn-primary" href="{{ route('Enterprise.edit',$Enterprise->id) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('Tracing.edit',$Tracing->id) }}">Edit</a>
             {!! Form::open(['method' => 'DELETE','route' => ['Tracing.destroy', $Tracing->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
