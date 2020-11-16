@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\task;
 
 class TaskController extends Controller
 {
@@ -13,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $Tasks=Task::latest()->paginate(10);
+        return view('Task.index',compact('Tasks'));
     }
 
     /**
@@ -23,9 +25,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view ('Task.create');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +36,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'description'=>'required',
+        ]);
+        Task::create($request->all());
+        return redirect()->route('Task.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -45,7 +53,8 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $Task=Task::find($id);
+        return  view('Task.show',compact('Task'));
     }
 
     /**
@@ -56,7 +65,8 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Task=Task::find($id);
+        return view('Task.edit',compact('Task'));
     }
 
     /**
@@ -68,7 +78,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'description'=>'required',
+        ]);
+        Task::create($request->all());
+        return redirect()->route('Task.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**

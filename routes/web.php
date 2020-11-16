@@ -38,3 +38,10 @@ Route::resource('Module', 'ModuleController');
 
 Route::get('/ce', 'CeController@index')->name('ce');
 Route::resource('Ce', 'CeController');
+
+Route::get('/ra', 'RaController@index')->name('ra');
+Route::resource('Ra', 'RaController');
+
+Route::get('/tarea', 'TaskController@index')->name('tarea');
+Route::resource('Task', 'TaskController');
+

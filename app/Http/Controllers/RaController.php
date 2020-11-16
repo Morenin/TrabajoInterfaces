@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ra;
 
 class RaController extends Controller
 {
@@ -13,7 +14,8 @@ class RaController extends Controller
      */
     public function index()
     {
-        //
+        $Ras=Ra::latest()->paginate(10);
+        return view('Ra.index',compact('Ras'));
     }
 
     /**
@@ -23,7 +25,7 @@ class RaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('Ra.create');
     }
 
     /**
@@ -34,7 +36,15 @@ class RaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Ra = new Ra();
+        $this->validate($request,[ 
+            'number' => 'required', 
+            'description' => 'required', 
+            'module_id' => 'required',
+            'deleted'=> 'required'
+        ]);
+        Ra::update($request->all());
+        return redirect()->route('Ra.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -45,7 +55,8 @@ class RaController extends Controller
      */
     public function show($id)
     {
-        //
+        $Ra=Ra::find($id);
+        return view('Ra.show',compact('Ra'));
     }
 
     /**
@@ -56,7 +67,8 @@ class RaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Ra=Ra::find($id);
+        return view('Ra.edit',compact('Ra'));
     }
 
     /**
@@ -68,7 +80,14 @@ class RaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'number' => 'required', 
+            'description' => 'required', 
+            'module_id' => 'required',
+            'deleted'=> 'required'
+        ]);
+        Ra::update($request->all());
+        return redirect()->route('Ra.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -79,6 +98,10 @@ class RaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Ra = Ra::find($id); 
+        $Ra->deleted = true;
+        $Ra->update();
+
+        return redirect()->route('Ra.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

@@ -49,9 +49,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('ra')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Resultados de Aprendizajes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('ce')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>Criterios de Evaulacion</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('tarea')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Tareas</p>
                     </a>
                 </li>
                 <li class="nav-item">
