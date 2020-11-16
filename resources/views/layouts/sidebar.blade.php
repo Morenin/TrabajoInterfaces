@@ -73,6 +73,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('seguimiento')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Seguimientos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('asistencia')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Asistencias</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <form id="logout-form" action="{{route('logout')}}" method="post">
                         @csrf
                     </form>
