@@ -34,5 +34,5 @@
     </tr>
     @endforeach
     </table>
-    {!! $enterprises->render() !!}
+    {!! $modules->render() !!}
 @endsection
