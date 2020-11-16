@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Cycle:</strong>
-            {!! Form::cycle_id('cycle_id', null, array('placeholder' => 'Cycle','class' => 'form-control')) !!}
+            {!! Form::text('cycle_id', null, array('placeholder' => 'Cycle','class' => 'form-control')) !!}
         </div>
     </div>
     
