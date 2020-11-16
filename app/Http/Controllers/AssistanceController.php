@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\assistance;
 
 class AssistanceController extends Controller
 {
@@ -13,7 +14,8 @@ class AssistanceController extends Controller
      */
     public function index()
     {
-        //
+        $assistances = Assistance::latest()->paginate(10);
+        return view('Assistance.index', compact('assistances'));
     }
 
     /**
@@ -23,7 +25,7 @@ class AssistanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('Assistance.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class AssistanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'student_id'=>'required',
+            'date'=>'required',
+            'assistance'=>'required',
+            'accepted'=>'required',
+            'deleted'=>'required',
+            ]);
+        Assistance::create($request->all());
+        return redirect()->route('Assistance.index')->with('success','Asistencia creada correctamente.');
     }
 
     /**
@@ -45,7 +56,8 @@ class AssistanceController extends Controller
      */
     public function show($id)
     {
-        //
+        $assistances = Assistance::find($id);
+        return view('Assistance.show', compact('assistances'));
     }
 
     /**
@@ -56,7 +68,8 @@ class AssistanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $assistances = Assistance::find($id);
+        return view('Assistance.edit',compact('assistances'));
     }
 
     /**
@@ -68,7 +81,16 @@ class AssistanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'id'=>'required',
+            'student_id'=>'required',
+            'date'=>'required',
+            'assistance'=>'required',
+            'accepted'=>'required',
+            'deleted'=>'required',
+            ]);
+        Assistance::create($request->all());
+        return redirect()->route('Assistance.index')->with('success','Asistencia creada correctamente.');
     }
 
     /**
@@ -79,6 +101,7 @@ class AssistanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Assistance::find($id)->delete();
+        return redirect()->route('Assistance.index')->with('success','Registro eliminado correctamente.');
     }
 }
