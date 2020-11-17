@@ -22,8 +22,10 @@
         @endauth
 
         <!-- Sidebar Menu -->
+       
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @if(Auth::user()->type == 'ad')
                 <li class="nav-item">
                     <a href="{{route('dashboard')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
@@ -42,6 +44,14 @@
                         <p>Ciclos</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('empresa')}}" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>Empresas</p>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::user()->type == 'tue' || Auth::user()->type == 'ad')
                 <li class="nav-item">
                     <a href="{{route('modulo')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
@@ -66,12 +76,8 @@
                         <p>Tareas</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('empresa')}}" class="nav-link">
-                        <i class="nav-icon fa fa-dashboard"></i>
-                        <p>Empresas</p>
-                    </a>
-                </li>
+                @endif
+                @if(Auth::user()->type == 'al' || Auth::user()->type == 'ad')
                 <li class="nav-item">
                     <a href="{{route('seguimiento')}}" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
@@ -84,6 +90,7 @@
                         <p>Asistencias</p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <form id="logout-form" action="{{route('logout')}}" method="post">
                         @csrf
@@ -127,6 +134,7 @@
                 </li> --}}
             </ul>
         </nav>
+       
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
