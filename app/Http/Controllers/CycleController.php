@@ -94,12 +94,9 @@ class CycleController extends Controller
      */
     public function destroy($id)
     {
-        $ciclo = Cycle::find($id); //primero hago variable de ese ciclo que busco que es el que voy a eliminar
-        // luego establezco el valor nuevo
-        $ciclo->deleted = 1;
-        //luego actualizo el registro
+        $ciclo = Cycle::find($id); 
+        $ciclo->deleted = true;
         $ciclo->update();
-
         return redirect()->route('Cycle.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

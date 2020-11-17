@@ -23,18 +23,20 @@
           <th width="200px">Operaciones</th>
         </tr>
     @foreach ($Cycles as $Cycle)
-    <tr>
+        <tr>
+        @if($Cycle -> deleted == false)
           <td>{{$Cycle -> grade }}</td>
           <td>{{$Cycle -> name }}</td>
           <td>{{$Cycle -> year}}</td>
-        <td>
+            <td>
             
             <a class="btn btn-primary" href="{{ route('Cycle.edit',$Cycle->id) }}">Editar</a>
             {!! Form::open(['method' => 'DELETE','route' => ['Cycle.destroy', $Cycle->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
-        </td>
-    </tr>
+            </td>
+        </tr>
+        @endif
     @endforeach
     </table>
     {!! $Cycles->render() !!}
