@@ -92,7 +92,7 @@ class UserController extends Controller
             'type' => 'required',
             
         ]);
-        User::create($request->all());
+        User::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('User.index')->with('success','Usuario actualizado correctamente');
     }
 

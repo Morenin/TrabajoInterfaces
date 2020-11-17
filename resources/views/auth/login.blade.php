@@ -40,7 +40,7 @@
                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
                         <label for="remember">
-                            Remember Me
+                            Recordar
                         </label>
                     </div> --}}
                 </div>
@@ -59,11 +59,11 @@
             <a href="{{ route('password.request') }}">{{ __('Lupa Password?') }}</a>
         </p>
         @endif
-        @if (Route::has('register'))
+        <!-- @if (Route::has('register'))
         <p class="mb-0">
             <a href="{{ route('register') }}" class="text-center">{{ __('Belum punya akun? Daftar sekarang') }}</a>
         </p>
-        @endif
+        @endif -->
     </div>
     <!-- /.login-card-body -->
 </div>
