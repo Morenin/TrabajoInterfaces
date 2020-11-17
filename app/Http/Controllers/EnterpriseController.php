@@ -37,10 +37,8 @@ class EnterpriseController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'id'=>'required',
             'name'=>'required',
             'email'=>'required',
-            'deleted'=>'required'
             ]);
         Enterprise::create($request->all());
         return redirect()->route('Enterprise.index')->with('success','Empresa creada correctamente.');
@@ -80,13 +78,11 @@ class EnterpriseController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'id'=>'required',
             'name'=>'required',
             'email'=>'required',
-            'deleted'=>'required'
             ]);
         //Enterprise::find($id)->update($request->all());
-        Enterprise::create($request->all());
+        Enterprise::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Enterprise.index')->with('success','Empresa actualizada correctamente.');
     }
 

@@ -37,10 +37,8 @@ class ModuleController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'id'=>'required',
             'name'=>'required',
             'cycle_id'=>'required',
-            'deleted'=>'required'
             ]);
         Module::create($request->all());
         return redirect()->route('Module.index')->with('success','Módulo creado correctamente.');
@@ -80,13 +78,13 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'id'=>'required',
+            
             'name'=>'required',
             'cycle_id'=>'required',
-            'deleted'=>'required'
+            
             ]);
-        //Enterprise::find($id)->update($request->all());
-        Module::create($request->all());
+        
+        Module::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Module.index')->with('success','Módulo actualizado correctamente.');
     }
 

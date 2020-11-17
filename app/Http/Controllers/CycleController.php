@@ -81,9 +81,9 @@ class CycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[ 'name'=>'required', 'grade'=>'required', 'year'=>'required']);
-        Cycles::update($request->all());
-        return redirect()->route('Cycle.index')->with('success','Registro creado satisfactoriamente');
+        $this->validate($request,[ 'grade'=>'required', 'name'=>'required', 'year'=>'required']);
+        Cycle::where('id', $id)->update($request->except('_token','_method'));
+        return redirect()->route('Cycle.index')->with('success','Registro modificado satisfactoriamente');
     }
 
     /**

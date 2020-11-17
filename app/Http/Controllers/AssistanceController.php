@@ -37,12 +37,9 @@ class AssistanceController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'id'=>'required',
             'student_id'=>'required',
             'date'=>'required',
             'assistance'=>'required',
-            'accepted'=>'required',
-            'deleted'=>'required',
             ]);
         Assistance::create($request->all());
         return redirect()->route('Assistance.index')->with('success','Asistencia creada correctamente.');
@@ -82,14 +79,11 @@ class AssistanceController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'id'=>'required',
             'student_id'=>'required',
             'date'=>'required',
             'assistance'=>'required',
-            'accepted'=>'required',
-            'deleted'=>'required',
             ]);
-        Assistance::create($request->all());
+        Assistance::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Assistance.index')->with('success','Asistencia creada correctamente.');
     }
 

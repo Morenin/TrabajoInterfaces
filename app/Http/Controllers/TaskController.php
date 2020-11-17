@@ -38,7 +38,7 @@ class TaskController extends Controller
     {
         $task = new Task();
         $data = $this->validate($request, [
-            'name'=>'required',
+            'number'=>'required',
             'description'=>'required',
         ]);
         Task::create($request->all());
@@ -79,10 +79,10 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $data = $this->validate($request, [
-            'name'=>'required',
+            'number'=>'required',
             'description'=>'required',
         ]);
-        Task::create($request->all());
+        Task::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Task.index')->with('success','Registro creado satisfactoriamente');
     }
 

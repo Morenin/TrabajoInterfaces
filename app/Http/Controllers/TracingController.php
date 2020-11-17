@@ -37,12 +37,10 @@ class TracingController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'id'=>'required',
             'type'=>'required',
             'reason'=>'required',
             'observation'=>'required',
             'tutor_c_id'=>'required',
-            'deleted'=>'required'
             ]);
         Tracing::create($request->all());
         return redirect()->route('Tracing.index')->with('success','Registro creado correctamente.');
@@ -82,15 +80,13 @@ class TracingController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'id'=>'required',
             'type'=>'required',
             'reason'=>'required',
             'observation'=>'required',
             'tutor_c_id'=>'required',
-            'deleted'=>'required'
             ]);
         //Enterprise::find($id)->update($request->all());
-        Tracing::create($request->all());
+        Tracing::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Tracing.index')->with('success','Registro creado correctamente.');
     }
 

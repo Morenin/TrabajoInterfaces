@@ -44,7 +44,7 @@ class CeController extends Controller
             'task_id' => 'required',
             'mark' => 'required',
         ]);
-        Ce::update($request->all());
+        Ce::create($request->all());
         return redirect()->route('Ce.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -88,7 +88,7 @@ class CeController extends Controller
             'task_id' => 'required',
             'mark' => 'required',
         ]);
-        Ce::update($request->all());
+        Ce::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Ce.index')->with('success','Registro creado satisfactoriamente');
     }
 

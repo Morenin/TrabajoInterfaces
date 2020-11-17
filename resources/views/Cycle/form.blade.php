@@ -14,7 +14,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Año:</strong>
-            {!! Form::text('year', null, array('placeholder' => 'Year','class' => 'form-control')) !!}
+            {!! Form::number('year', null, array('placeholder' => 'Year','class' => 'form-control')) !!}
         </div>
     </div>
     

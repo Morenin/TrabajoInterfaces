@@ -35,10 +35,11 @@
         <div class="form-group">
             <strong>Tipo de usuario:</strong>
                 <select name="tipo">
-                    <option value="1">al</option>
-                    <option value="2">tue</option>
-                    <option value="3">tul</option>
+                    <option value="al">Alumno</option>
+                    <option value="tue">Tutor Educativo</option>
+                    <option value="tul">Tutor Laboral</option>
                 </select>
+            {!! Form::text('type')!!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">

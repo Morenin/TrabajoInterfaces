@@ -17,12 +17,6 @@
             {!! Form::text('assistance', null, array('placeholder' => 'Assistance','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Accepted:</strong>
-            {!! Form::text('accepted', null, array('placeholder' => 'Accepted','class' => 'form-control')) !!}
-        </div>
-    </div>>
     
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>

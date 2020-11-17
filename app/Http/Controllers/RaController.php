@@ -41,9 +41,9 @@ class RaController extends Controller
             'number' => 'required', 
             'description' => 'required', 
             'module_id' => 'required',
-            'deleted'=> 'required'
+            
         ]);
-        Ra::update($request->all());
+        Ra::create($request->all());
         return redirect()->route('Ra.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -84,9 +84,8 @@ class RaController extends Controller
             'number' => 'required', 
             'description' => 'required', 
             'module_id' => 'required',
-            'deleted'=> 'required'
         ]);
-        Ra::update($request->all());
+        Ra::where('id', $id)->update($request->except('_token','_method'));
         return redirect()->route('Ra.index')->with('success','Registro creado satisfactoriamente');
     }
 
