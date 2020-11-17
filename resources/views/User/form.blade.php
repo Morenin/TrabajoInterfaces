@@ -43,7 +43,10 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Identerprise:</strong>
+            <strong>Empresa:</strong>
+            <select name="enterprise_id">
+                <option value="Enterprise.id">{{Enterprise -> name}}</option>
+            </select>
             {!! Form::number('enterprise_id', null, array('placeholder' => 'IDenterprise ','class' => 'form-control')) !!}
         </div>
     </div>

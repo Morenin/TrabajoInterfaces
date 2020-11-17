@@ -5,9 +5,11 @@
             <div class="pull-left">
                 <h2>Lista de asistencias</h2>
             </div>
+            @if(Auth::User() -> type == 'ad')
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('Assistance.create') }}"> Crear nueva asistencia</a>
             </div>
+            @endif
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -25,18 +27,20 @@
         </tr>
     @foreach ($assistances as $Assistance)
     <tr>
+        @if(Auth::User()->id == 'student_id' || Auth::User()-> type == 'ad')
         <td>{{$Assistance -> student_id }}</td>
         <td>{{$Assistance -> date }}</td>
         <td>{{$Assistance -> assistance }}</td>
         <td>{{$Assistance -> accepted }}</td>
         <td>
-        @if (auth()->user()->type === 'al')
+            @if (auth()->user()->type === 'al')
             <button type="button" class="btn btn-primary">Aceptar</button>
-        @else
+            @else
             <a class="btn btn-primary" href="{{ route('Assistance.edit',$Assistance->id) }}">Edit</a>
             {!! Form::open(['method' => 'DELETE','route' => ['Assistance.destroy', $Assistance->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
+            @endif
         @endif
         </td>
     </tr>
