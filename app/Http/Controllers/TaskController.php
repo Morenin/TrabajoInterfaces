@@ -94,6 +94,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id); 
+        $task ->deleted = true;
+        $task ->update();
+        return redirect()->route('Task.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

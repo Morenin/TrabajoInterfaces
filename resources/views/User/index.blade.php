@@ -28,6 +28,7 @@
         </tr>
     @foreach ($Users as $User)
     <tr>
+        @if($User -> deleted == false || $User -> type != 'ad')
           <td>{{$User -> name }}</td>
           <td>{{$User -> firstname }}</td>
           <td>{{$User -> phone}}</td>
@@ -42,6 +43,7 @@
             {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

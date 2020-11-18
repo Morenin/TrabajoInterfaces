@@ -104,7 +104,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('User.index')->with('success','Usuario eliminado correctamente');
+        $user = User::find($id); 
+        $user->deleted = true;
+        $user->update();
+        return redirect()->route('Cycle.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

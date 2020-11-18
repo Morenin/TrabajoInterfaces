@@ -94,7 +94,9 @@ class EnterpriseController extends Controller
      */
     public function destroy($id)
     {
-        Enterprise::find($id)->delete();
-        return redirect()->route('Enterprise.index')->with('success','Registro eliminado correctamente.');
+        $enterprise = Enterprise::find($id); 
+        $enterprise->deleted = true;
+        $enterprise->update();
+        return redirect()->route('Cycle.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

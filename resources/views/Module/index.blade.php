@@ -23,6 +23,7 @@
         </tr>
     @foreach ($modules as $Module)
     <tr>
+        @if($Module -> deleted == false)   
           <td>{{$Module -> name }}</td>
           <td>{{$Module -> cycle_id }}</td>
         <td>
@@ -31,6 +32,7 @@
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

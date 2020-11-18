@@ -25,6 +25,7 @@
         </tr>
     @foreach ($tracings as $Tracing)
     <tr>
+        @if($Tracing -> deleted == false)
           <td>{{$Tracing -> type }}</td>
           <td>{{$Tracing -> reason }}</td>
           <td>{{$Tracing -> observation }}</td>
@@ -35,6 +36,7 @@
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

@@ -101,7 +101,7 @@ class CeController extends Controller
     public function destroy($id)
     {
         $Ce = Ce::find($id); 
-        $Ce->deleted = 1;
+        $Ce->deleted = true;
         $Ce->update();
 
         return redirect()->route('Ce.index')->with('success','Registro eliminado satisfactoriamente');

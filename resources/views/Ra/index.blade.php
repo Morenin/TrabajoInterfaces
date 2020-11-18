@@ -24,6 +24,7 @@
         </tr>
     @foreach ($Ras as $Ra)
     <tr>
+        @if($Ra -> deleted == false)
           <td>{{$Ra -> number }}</td>
           <td>{{$Ra -> description }}</td>
           <td>{{$Ra -> module_id}}</td>
@@ -33,6 +34,7 @@
             {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

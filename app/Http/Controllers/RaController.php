@@ -100,7 +100,6 @@ class RaController extends Controller
         $Ra = Ra::find($id); 
         $Ra->deleted = true;
         $Ra->update();
-
         return redirect()->route('Ra.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

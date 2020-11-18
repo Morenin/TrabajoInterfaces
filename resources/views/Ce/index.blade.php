@@ -3,7 +3,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Ciclos</h2>
+                <h2>Criterios de evaulacion</h2>
             </div>
             <div class="pull-right ">
                 <a class="btn btn-success" href="{{ route('Ce.create') }}"> Crear Nuevo Criterio</a>
@@ -26,6 +26,7 @@
         </tr>
     @foreach ($Ces as $Ce)
     <tr>
+        @if($Ce -> deleted == false)
           <td>{{$Ce -> word }}</td>
           <td>{{$Ce -> description }}</td>
           <td>{{$Ce -> ra_id}}</td>
@@ -37,6 +38,7 @@
             {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

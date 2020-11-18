@@ -23,6 +23,7 @@
         </tr>
     @foreach ($enterprises as $Enterprise)
     <tr>
+        @if($Enterprise -> deleted == false)
           <td>{{$Enterprise -> name }}</td>
           <td>{{$Enterprise -> email }}</td>
         <td>
@@ -31,6 +32,7 @@
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

@@ -23,6 +23,7 @@
         </tr>
     @foreach ($Tasks as $Task)
     <tr>
+        @if($Task -> deleted == false)
           <td>{{$Task -> number }}</td>
           <td>{{$Task -> description }}</td>
         <td>
@@ -31,6 +32,7 @@
             {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
         </td>
+        @endif
     </tr>
     @endforeach
     </table>

@@ -98,7 +98,9 @@ class TracingController extends Controller
      */
     public function destroy($id)
     {
-        Tracing::find($id)->delete();
-        return redirect()->route('Tracing.index')->with('success','Registro eliminado correctamente.');
+        $tracing = Tracing::find($id); 
+        $tracing->deleted = true;
+        $tracing->update();
+        return redirect()->route('Tracing.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

@@ -96,7 +96,9 @@ class ModuleController extends Controller
      */
     public function destroy($id)
     {
-        Module::find($id)->delete();
-        return redirect()->route('Module.index')->with('success','Registro eliminado correctamente.');
+        $module = Module::find($id); 
+        $module->deleted = true;
+        $module->update();
+        return redirect()->route('Cycle.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }
