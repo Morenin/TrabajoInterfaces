@@ -35,6 +35,8 @@
         <td>
             @if (auth()->user()->type === 'al')
             <button type="button" class="btn btn-primary">Aceptar</button>
+            {!! Form::open(['method' => 'PATCH','route' => ['Assistance.aceptar', $Assistance->id],'style'=>'display:inline']) !!}
+            {!! Form::close() !!}
             @else
             <a class="btn btn-primary" href="{{ route('Assistance.edit',$Assistance->id) }}">Edit</a>
             {!! Form::open(['method' => 'DELETE','route' => ['Assistance.destroy', $Assistance->id],'style'=>'display:inline']) !!}
