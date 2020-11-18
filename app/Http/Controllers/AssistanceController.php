@@ -98,4 +98,8 @@ class AssistanceController extends Controller
         Assistance::find($id)->delete();
         return redirect()->route('Assistance.index')->with('success','Registro eliminado correctamente.');
     }
+    
+    public function aceptar($id) {
+        Assistance::find($id)->update(['accepted'=>true]);
+    }
 }
