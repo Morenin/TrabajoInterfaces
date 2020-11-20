@@ -24,7 +24,7 @@
 	<div class="container-fluid">
 
 		{{-- main content here --}}
-
+		
 	</div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->

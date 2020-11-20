@@ -5,6 +5,6 @@
         {{-- Anything you want --}}
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; {{date('Y')}} <a href="{{route('dashboard')}}">{{config('app.name')}}</a>.</strong> All rights
-    reserved.
+    <strong>Trabajo Realizado por Francisco Jose Moreno, Javier Travesi y Alicia Walias .</strong> 
+    
 </footer>
