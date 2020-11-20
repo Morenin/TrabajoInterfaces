@@ -22,21 +22,23 @@
           <th>ID Estudiante</th>
           <th>Fecha</th>
           <th>Asistencia</th>
-          <th>Aceptada</th>
+          
           <th width="280px">Operation</th>
         </tr>
     @foreach ($assistances as $Assistance)
     <tr>
-        @if(Auth::User()->id == 'student_id' || Auth::User()-> type == 'ad')
+        @if(Auth::User()->id == $Assistance->student_id && $Assistance->accepted == false || Auth::User()-> type == 'ad' )
         <td>{{$Assistance -> student_id }}</td>
         <td>{{$Assistance -> date }}</td>
         <td>{{$Assistance -> assistance }}</td>
-        <td>{{$Assistance -> accepted }}</td>
+        
         <td>
-            @if (auth()->user()->type === 'al')
-            <button type="button" class="btn btn-primary">Aceptar</button>
-            {!! Form::open(['method' => 'PATCH','route' => ['Assistance.aceptar', $Assistance->id],'style'=>'display:inline']) !!}
-            {!! Form::close() !!}
+            @if (Auth::User()->type === 'al')
+                @if(date("D")=='Saturday')
+                <a class="btn btn-primary" href="{{ route('Assistance.show',$Assistance->id) }}">Aceptar asistencia</a>
+                @else
+                Esperar a domingo para confirmar
+                @endif            
             @else
             <a class="btn btn-primary" href="{{ route('Assistance.edit',$Assistance->id) }}">Edit</a>
             {!! Form::open(['method' => 'DELETE','route' => ['Assistance.destroy', $Assistance->id],'style'=>'display:inline']) !!}

@@ -53,8 +53,8 @@ class AssistanceController extends Controller
      */
     public function show($id)
     {
-        $assistances = Assistance::find($id);
-        return view('Assistance.show', compact('assistances'));
+        Assistance::find($id)->update(['accepted'=>true]);
+        return redirect()->route('Assistance.index')->with('success','Registro confirmado correctamente.');
     }
 
     /**
